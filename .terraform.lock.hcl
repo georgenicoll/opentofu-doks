@@ -1,6 +1,29 @@
 # This file is maintained automatically by "tofu init".
 # Manual edits may be lost in future updates.
 
+provider "registry.opentofu.org/hashicorp/digitalocean" {
+  version = "2.36.0"
+  hashes = [
+    "h1:RJRiSKNguA33LlEZ2KmK7EpvogdV8lUVlCD5M8lVqtE=",
+    "zh:023d11f654e4049e80254d8edb950f6c84c993134c8ffb5ec09a71e77f486cbe",
+    "zh:1aa4d213d18c06df0d791aa154188517ea3efaac69f14e2de3f8e152961e22fd",
+    "zh:1c6adfc92a8b450ff915e5c449b3f6d0e5736c10250327467333003e119005e8",
+    "zh:271adfcf7a9d57bb0916118e1d6b04fba2b7730db583a654821d575f5581266e",
+    "zh:42bc0912cd2ab539cacb40aa22ca107306e6e16d0d6544237d93c62223c7f3ac",
+    "zh:5083fb44847461a3839eec222540283f2cb5db71beab0581c1ac26a2c8ed2a61",
+    "zh:561e5e85a3f443f93f49b8b4013f3674dc291a6b48a2ef11e055f9c07d2b5c7b",
+    "zh:57cef0755470862dcda9294629649e643657b86e36f2272ce75413c14614d5de",
+    "zh:7a31ae9c07984a9cc1b23d1d4e0df247f52dcf9be52052cdfb6bf70eeb924e56",
+    "zh:8176d64c4c3ce75c81f91bf508f021708d92e5326a025f5ea98b5988983617c9",
+    "zh:829375a4b78f956e418d5e18dd8972db430111617304d84dda38114eaf9e41e0",
+    "zh:8c68d7a0e6ad9684227b35aa050e2217f50424d89fd85fc48316c2b106d98158",
+    "zh:b109589e5462b5749993453e0f0d6a46f96b1e5c4eaecd3ba6a66e41cdd7d49e",
+    "zh:b3c1a8af6f29a7e671fce29eca56f00e057d416b5bfc46c1a7efa4c6863956b1",
+    "zh:ee8bea37be084a438870b72b0974c0f53476d045b813f9c222aec73012caa831",
+    "zh:ef95d44d8f70de4091c7714c3e261666106a366ab291349d98cdea72be043dc9",
+  ]
+}
+
 provider "registry.opentofu.org/hashicorp/kubernetes" {
   version = "2.31.0"
   hashes = [
@@ -32,19 +55,5 @@ provider "registry.opentofu.org/hashicorp/local" {
     "zh:b336fa75f72643154b07c09b3968e417a41293358a54fe03efc0db715c5451e6",
     "zh:c66529133599a419123ad2e42874afbd9aba82bd1de2b15cc68d2a1e665d4c8e",
     "zh:c7568f75ba6cb7c3660b69eaab8b0e4278533bd9a7a4c33ee6590cc7e69743ea",
-  ]
-}
-
-provider "registry.opentofu.org/tehcyx/kind" {
-  version     = "0.5.1"
-  constraints = "0.5.1"
-  hashes = [
-    "h1:RhuvEnk33ELQSVtOYydIvkxMa2ZX+8OkbkNzgPC/uH8=",
-    "zh:0ac1fa0b309ed577e8e625de76895076d4b4d269703a6904ceb381584e052e33",
-    "zh:54eae54f9094a9c4084a7a41f3d7e6f6df7526c3d43347cce2dce19ba4c21265",
-    "zh:60dc0a1e15356ce900b20ccca06edf96828df9d5fb9d6b3723404b203e6258b0",
-    "zh:8197dd640596ebb8a00de1eaaeae1dba2040084f542821e53c1a9386c84ff7f7",
-    "zh:b0e029e625ea7b80fe7727430db80561a9bb8ee299b007f9cffbdf42ef4e2965",
-    "zh:ea2a900590cca200f18130d18867ff3c5b095712366c590c70b6b69788e3723b",
   ]
 }
