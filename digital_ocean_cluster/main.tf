@@ -4,6 +4,10 @@ variable "do_token" {
   default     = "<needs to be overridden>"
 }
 
+variable "kubeconfig_path" {
+  type = string
+}
+
 # terraform {
 #     required_providers {
 #       kubernetes = {
@@ -47,22 +51,15 @@ resource "digitalocean_kubernetes_cluster" "tofu_doks" {
   }
 }
 
-output "raw_kube_config" {
-  value = digitalocean_kubernetes_cluster.tofu_doks.kube_config[0].raw_config
+resource "local_file" "kubeconfig" {
+  content  = digitalocean_kubernetes_cluster.tofu_doks.kube_config.0.raw_config
+  filename = var.kubeconfig_path
 }
 
-output "cluster_name" {
-  value = digitalocean_kubernetes_cluster.tofu_doks.name
+output "kubeconfig_path" {
+  value = local_file.kubeconfig.filename
 }
 
-output "cluster_endpoint" {
-  value = digitalocean_kubernetes_cluster.tofu_doks.endpoint
-}
-
-output "cluster_token" {
-  value = digitalocean_kubernetes_cluster.tofu_doks.kube_config[0].token
-}
-
-output "cluster_ca_certificate" {
-  value = digitalocean_kubernetes_cluster.tofu_doks.kube_config[0].cluster_ca_certificate
+output "kubeconfig_context" {
+  value = ""
 }

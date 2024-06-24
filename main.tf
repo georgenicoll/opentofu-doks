@@ -8,23 +8,21 @@ locals {
   kubeconfig_path = abspath("${path.root}/kubeconfig")
 }
 
+# Uncomment the k8 cluster to deploy.. digitalocean or local kind
+
 module "k8_cluster" {
-  source   = "./digital_ocean_cluster"
-  do_token = var.do_token
+  source          = "./digital_ocean_cluster"
+  do_token        = var.do_token
+  kubeconfig_path = local.kubeconfig_path
 }
 
 # module "k8_cluster" {
 #   source   = "./kind_cluster"
+#   kubeconfig_path = local.kubeconfig_path
 # }
 
 module "nginx" {
-  source                 = "./nginx"
-  cluster_endpoint       = module.k8_cluster.cluster_endpoint
-  cluster_token          = module.k8_cluster.cluster_token
-  cluster_ca_certificate = module.k8_cluster.cluster_ca_certificate
-}
-
-resource "local_file" "kubeconfig" {
-  content  = module.k8_cluster.raw_kube_config
-  filename = local.kubeconfig_path
+  source             = "./nginx"
+  kubeconfig_path    = module.k8_cluster.kubeconfig_path
+  kubeconfig_context = module.k8_cluster.kubeconfig_context
 }

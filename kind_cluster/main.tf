@@ -1,3 +1,7 @@
+variable "kubeconfig_path" {
+  type = string
+}
+
 terraform {
   required_providers {
     kind = {
@@ -8,26 +12,19 @@ terraform {
 }
 
 resource "kind_cluster" "cluster" {
-  name = "tofu_cluster"
+  name = "tofu-cluster"
   wait_for_ready = true
 }
 
-output "raw_kube_config" {
-  value = kind_cluster.cluster.kubeconfig
+resource "local_file" "kubeconfig" {
+  source  = kind_cluster.cluster.kubeconfig_path
+  filename = var.kubeconfig_path
 }
 
-output "cluster_name" {
-  value = kind_cluster.cluster.name
+output "kubeconfig_path" {
+  value = local_file.kubeconfig.filename
 }
 
-output "cluster_endpoint" {
-  value = kind_cluster.cluster.endpoint
-}
-
-output "cluster_token" {
-  value = kind_cluster.cluster.???
-}
-
-output "cluster_ca_certificate" {
-  value = kind_cluster.cluster.???
+output "kubeconfig_context" {
+  value = "kind-tofu-cluster"
 }

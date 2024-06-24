@@ -1,19 +1,14 @@
-variable "cluster_endpoint" {
+variable "kubeconfig_path" {
   type = string
 }
 
-variable "cluster_token" {
-  type = string
-}
-
-variable "cluster_ca_certificate" {
+variable "kubeconfig_context" {
   type = string
 }
 
 provider "kubernetes" {
-  host  = var.cluster_endpoint
-  token = var.cluster_token
-  cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+  config_path = var.kubeconfig_path
+  config_context = var.kubeconfig_context
 }
 
 locals {
